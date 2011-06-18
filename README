@@ -1,0 +1,11 @@
+********************
+  OpenCL Utilities
+********************
+
+Description:
+------------
+   OpenCL utilities for faster development of simple OpenCL projects.
+
+Compilation:
+------------
+   Add preproccesor definition "OCL_UTIL_GL_SHARING_ENABLE" to enable OpenGL-OpenCL interop.
