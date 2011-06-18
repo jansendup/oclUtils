@@ -599,3 +599,26 @@ void oclPrintDeviceInfo(cl_device_id device)
 		vec_width[0], vec_width[1], vec_width[2], vec_width[3], vec_width[4], vec_width[5]); 
 }
 
+void oclPrintBuildLog(cl_program program, cl_device_id deviceId)
+{
+	cl_build_status build_status;
+	cl_int error;
+	
+	if(program == NULL)
+		return;
+
+	// Get and print build status messages.
+	error = clGetProgramBuildInfo(program, deviceId, CL_PROGRAM_BUILD_STATUS, sizeof(cl_build_status), &build_status, NULL);
+
+	char *build_log;
+	size_t ret_val_size;
+	error = clGetProgramBuildInfo(program, deviceId, CL_PROGRAM_BUILD_LOG, 0, NULL, &ret_val_size);
+
+	build_log = new char[ret_val_size+1];
+	error = clGetProgramBuildInfo(program, deviceId, CL_PROGRAM_BUILD_LOG, ret_val_size, build_log, NULL);
+	build_log[ret_val_size] = '\0';
+	printf("BUILD LOG: \n %s", build_log);
+
+	delete build_log;
+}
+

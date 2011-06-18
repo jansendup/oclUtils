@@ -17,5 +17,6 @@ bool oclHandleErrorMessage(const char* action, cl_int error);
 
 void oclPrintPlatformInfo(cl_platform_id id);
 void oclPrintDeviceInfo(cl_device_id device);
+void oclPrintBuildLog(cl_program program, cl_device_id deviceId);
 
 #endif
