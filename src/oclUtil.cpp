@@ -65,7 +65,7 @@ GLuint oglCreateVBO(const void* data, int dataSize, GLenum target, GLenum usage)
 {
 	GLuint vbo;
 	glGenBuffers(1,&vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(target, vbo);
 	glBufferData(target, dataSize, data, usage);
 
 	int bufferSize = 0;
@@ -621,4 +621,3 @@ void oclPrintBuildLog(cl_program program, cl_device_id deviceId)
 
 	delete build_log;
 }
-
